@@ -9,15 +9,17 @@ from selene import browser, be
 @pytest.fixture(params=[(1280, 720), (1400, 600), (1920, 1080)])
 def browser_options_desktop(request):
     width, height = request.param
-    browser.driver.set_window_size(width, height)
+    browser.config.window_width = width
+    browser.config.window_height = height
     yield
     browser.quit()
 
 @pytest.fixture(params=[(414, 890), (439, 932), (375, 667)])
 def browser_options_mobile(request):
     width, height = request.param
-    browser.driver.set_window_size(width, height)
-    yield browser
+    browser.config.window_width = width
+    browser.config.window_height = height
+    yield
     browser.quit()
 
 def test_github_desktop(browser_options_desktop):
