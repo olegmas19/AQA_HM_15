@@ -17,7 +17,7 @@ def browser_options_desktop(request):
 def browser_options_mobile(request):
     width, height = request.param
     browser.driver.set_window_size(width, height)
-    yield
+    yield browser
     browser.quit()
 
 def test_github_desktop(browser_options_desktop):
