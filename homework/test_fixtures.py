@@ -6,7 +6,7 @@ from selene import browser, be
 """
 
 
-@pytest.fixture(params=[(1280, 720), (1400, 600), (1920, 1080)])
+@pytest.fixture(params=[(1280, 720), (1400, 600), (1920, 1080)], ids=["1280x720", "1400x600", "1920x1080"])
 def browser_options_desktop(request):
     width, height = request.param
     browser.config.window_width = width
@@ -14,7 +14,7 @@ def browser_options_desktop(request):
     yield
     browser.quit()
 
-@pytest.fixture(params=[(414, 890), (439, 932), (375, 667)])
+@pytest.fixture(params=[(414, 890), (439, 932), (375, 667)], ids=["414x890", "439x932", "375x667"])
 def browser_options_mobile(request):
     width, height = request.param
     browser.config.window_width = width

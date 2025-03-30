@@ -14,12 +14,12 @@ def browser_options(request):
     browser.quit()
 
 
-@pytest.mark.parametrize("browser_options", [(1280, 720), (1400, 600), (1920, 1080)], indirect=True)
+@pytest.mark.parametrize("browser_options", [(1280, 720), (1400, 600), (1920, 1080)], indirect=True, ids=lambda size: f"{size[0]}x{size[1]}")
 def test_github_desktop(browser_options):
     browser.open('https://github.com/')
     browser.element('.HeaderMenu-link--sign-up').should(be.visible).click()
 
-@pytest.mark.parametrize("browser_options", [(414, 890), (439, 932), (375, 667)], indirect=True)
+@pytest.mark.parametrize("browser_options", [(414, 890), (439, 932), (375, 667)], indirect=True, ids=lambda size: f"{size[0]}x{size[1]}")
 def test_github_mobile(browser_options):
     browser.open('https://github.com/')
     browser.element('.Button-content').should(be.visible).click()
