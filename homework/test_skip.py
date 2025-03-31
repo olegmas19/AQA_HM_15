@@ -23,17 +23,15 @@ def browser_options(request):
 
 
 def test_github_desktop(browser_options):
-    browser.open("https://github.com/")
     if browser_options == "mobile":
         pytest.skip(reason="Разрешение браузера для моб.устройств")
-    else:
-        browser.element(".HeaderMenu-link--sign-up").should(be.visible).click()
+    browser.open("https://github.com/")
+    browser.element(".HeaderMenu-link--sign-up").should(be.visible).click()
 
 
 def test_github_mobile(browser_options):
-    browser.open("https://github.com/")
     if browser_options == "desktop":
         pytest.skip(reason="Разрешение браузера десктопное")
-    else:
-        browser.element(".Button-content").should(be.visible).click()
-        browser.element(".HeaderMenu-link--sign-up").should(be.visible).click()
+    browser.open("https://github.com/")
+    browser.element(".Button-content").should(be.visible).click()
+    browser.element(".HeaderMenu-link--sign-up").should(be.visible).click()
